@@ -30,6 +30,3 @@
 
 ## 📝 Notas de Desarrollo
 Este proyecto se desarrolla como parte del ciclo superior de **Desarrollo de Aplicaciones Web (DAW)**. El objetivo principal es ofrecer una herramienta ligera, escalable y profesional para pequeñas empresas y asociaciones.
-
----
-Generado por **Gemini** para el proyecto QuickSlot - 2026.
