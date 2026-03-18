@@ -1,0 +1,18 @@
+# Ignoramos el archivo de configuración real para no subir contraseñas
+config/config.php
+!config/config.php.example
+
+# --- Archivos del Sistema y Editores ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.tmp
+
+# --- Subidas de usuarios ---
+public/img/uploads/*
+!public/img/uploads/.gitkeep
+
+# --- Otros ---
+.env
