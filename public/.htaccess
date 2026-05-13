@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Si es un archivo físico (ej. css/style.css o img/logo.png), déjalo pasar
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Si no es un archivo, mándalo al enrutador
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
