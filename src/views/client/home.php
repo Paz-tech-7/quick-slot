@@ -58,7 +58,7 @@
         <section class="relative max-w-7xl mx-auto my-4 md:my-8 rounded-3xl overflow-hidden shadow-2xl">
             
             <!-- 1. LA IMAGEN DE FONDO -->
-            <img src="imagen hero.png" alt="Fondo QuickSlot" class="absolute inset-0 w-full h-full object-cover object-center z-0">
+            <img src="<?php echo APP_ROOT . '\public\img\imagenHomeHero.png'?>" alt="Fondo QuickSlot" class="absolute inset-0 w-full h-full object-cover object-center z-0">
             
             <!-- 2. LA CAPA DE CONTRASTE (Overlay) -->
             <!-- Es un filtro azul oscuro semitransparente para que el texto blanco se lea bien -->
