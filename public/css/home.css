@@ -1,0 +1,143 @@
+/* --- HERO SECTION --- */
+.hero-section {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(49, 46, 129, 0.8); /* Equivalente a bg-indigo-900/80 */
+    z-index: 10;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--white);
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.highlight-text { color: #a5b4fc; } /* indigo-300 */
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    color: #e0e7ff; /* indigo-100 */
+}
+
+.btn-hero {
+    background-color: var(--white);
+    color: var(--primary);
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.125rem;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+
+.btn-hero:hover { background-color: #f3f4f6; }
+
+/* --- CARACTERÍSTICAS --- */
+.features-section {
+    background-color: var(--white);
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.features-grid, .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.feature-card, .step-card {
+    background-color: var(--bg-system);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.feature-icon, .step-number {
+    width: 3rem; height: 3rem;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.feature-icon {
+    background-color: #e0e7ff;
+    font-size: 1.5rem;
+}
+
+/* --- PASOS --- */
+.steps-section {
+    padding: 4rem 0;
+    background-color: var(--bg-system);
+}
+
+.section-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+.section-subtitle { color: var(--text-muted); margin-bottom: 3rem; }
+
+.step-number {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 4px solid var(--bg-system);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- CTA FINAL --- */
+.cta-section {
+    background-color: var(--primary);
+    padding: 4rem 0;
+    color: var(--white);
+}
+
+.cta-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+    .hero-title { font-size: 4rem; }
+    .features-grid, .steps-grid { grid-template-columns: repeat(3, 1fr); }
+    .cta-flex { flex-direction: row; justify-content: space-between; text-align: left; }
+}

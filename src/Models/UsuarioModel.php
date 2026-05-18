@@ -24,4 +24,24 @@ class UsuarioModel {
         return $stmt->fetch();
     }
 
+    /**
+     * ------------------------------------------- 
+     * METODO PARA REGISTRARSE COMO NUEVO USUARIO
+     * -------------------------------------------
+     */
+    public function crearUsuario(string $nombre, string $email, string $passwordHash) : bool {
+        
+        //1. Se prepara la consulta INSERT a traves de parametros procesados
+        $sql = "INSERT INTO usuarios(nombre, email, password, rol) VALUES (:nombre, :email, :password, 'cliente')";
+        $stmt = $this->db->prepare($sql);
+
+        //2. Ejecucion rellenando los huecos
+        // si tiene exito devuelve true, si falla devuelve false
+        return $stmt->execute([
+            'nombre'  => $nombre,
+            'email'   => $email,
+            'password' => $passwordHash
+        ]);
+    }
+
 }

@@ -1,32 +1,32 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar Sesión - QuickSlot</title>
-</head>
-<body>
-    <h2>Acceso a QuickSlot</h2>
+<section class="auth-box">
+    
+    <h2 class="auth-title">Acceso a QuickSlot</h2>
 
-    <!-- Bloque para mostrar errores si el usuario se equivoca -->
     <?php if (isset($error)): ?>
-        <p style="color: red; font-weight: bold;"><?= $error ?></p>
+        <div class="alert-error">
+            <?= $error ?>
+        </div>
     <?php endif; ?>
 
-    <!-- EL FORMULARIO CLAVE -->
     <form action="<?= BASE_URL ?>Auth/procesarLogin" method="POST">
-        <div>
+        
+        <div class="form-group">
             <label>Correo Electrónico:</label>
-            <!-- El atributo name="email" es vital porque PHP buscará $_POST['email'] -->
-            <input type="email" name="email" required>
+            <input type="email" name="email" class="form-input" required placeholder="tu@correo.com">
         </div>
         
-        <div>
+        <div class="form-group">
             <label>Contraseña:</label>
-            <!-- El atributo name="password" es vital porque PHP buscará $_POST['password'] -->
-            <input type="password" name="password" required>
+            <input type="password" name="password" class="form-input" required placeholder="Tu contraseña">
         </div>
         
-        <button type="submit">Entrar</button>
+        <div class="form-group" style="margin-top: 1.5rem;">
+            <button type="submit" class="btn-primary">Entrar</button>
+        </div>
     </form>
-</body>
-</html>
+
+    <div class="auth-footer">
+        ¿No tienes cuenta? <a href="<?= BASE_URL ?>Auth/registro" class="auth-link">Regístrate aquí</a>
+    </div>
+
+</section>

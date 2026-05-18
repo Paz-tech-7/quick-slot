@@ -1,7 +1,7 @@
 <?php 
 
 class AdminController extends Controller {
-    public function dashboard() {
+    public function dashboard() : void{
 
         // Verificacion de si la sesion no existe o si el rol no es de administrador
         if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'admin'){

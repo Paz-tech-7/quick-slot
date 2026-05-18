@@ -1,16 +1,20 @@
-<?php 
+<?php
 
-class Controller {
+class Controller
+{
     /**
      * Carga una vista y le pasa datos (opcional)
      * 
      * @param string $vista - Ruta de la vista (ej: 'client/home')
      * @param array $datos - Datos dinámicos para mostrar en la vista
-    */
-    public function view($vista, $datos = []) {
+     */
+    public function view($vista, $datos = []) : void
+    {
         // Extraemos las variables del array para poder usarlas en el HTML
         // Ejemplo: ['nombre' => 'Carlos'] se convierte en la variable $nombre
-        extract($datos);
+        if (!empty($datos)) {
+            extract($datos);
+        }
 
         $rutaVista = APP_ROOT . '/src/views/' . $vista . '.php';
 
@@ -26,7 +30,8 @@ class Controller {
      * 
      * @param string $modelo - Nombre del modelo (ej: 'UsuarioModel')
      */
-    public function model($modelo) {
+    public function model($modelo) : Object
+    {
         $rutaModelo = APP_ROOT . '/src/Models/' . $modelo . '.php';
 
         if (file_exists($rutaModelo)) {
@@ -36,5 +41,4 @@ class Controller {
             die("Error del Sistema: El modelo '{$modelo}' no existe");
         }
     }
-
 }

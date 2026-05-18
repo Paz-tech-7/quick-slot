@@ -1,0 +1,47 @@
+/* Contenedor central para Login y Registro */
+.auth-box {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    max-width: 450px;
+    margin: 3rem auto; /* Lo centra horizontalmente y le da aire por arriba */
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+/* Mensajes de error del sistema */
+.alert-error {
+    background-color: var(--danger-bg);
+    color: var(--danger);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+/* Enlaces inferiores (ej. "¿Ya tienes cuenta?") */
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.auth-link {
+    color: var(--primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}

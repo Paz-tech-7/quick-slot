@@ -1,3 +1,8 @@
+<section class="welcome-box" style="margin-bottom: 2rem;">
+    <h1>Bienvenido a tu panel, <?= htmlspecialchars($nombre) ?></h1>
+    <p class="text-muted">Aquí tienes las salas disponibles para reservar hoy.</p>
+</section>
+
 <section class="search-section">
     <h2>Buscar disponibilidad</h2>
     <form class="form-grid">
@@ -18,45 +23,57 @@
     </form>
 </section>
 
-<h3 class="rooms-header">Salas disponibles (2)</h3>
-<div class="rooms-grid">
+<?php
+// Filtramos el arreglo: solo nos quedamos con las salas cuyo estado sea 'disponible'
+$salasLibres = array_filter($salas, function ($sala) {
+    return $sala->estado === 'disponible';
+});
+?>
 
-    <article class="card">
-        <div class="card-body">
-            <div class="card-title-row">
-                <h4>Sala Gaudí</h4>
-                <span class="badge-success">Libre</span>
-            </div>
-            <p class="card-desc">Sala de reuniones equipada con proyector y pizarra blanca.</p>
-            <div class="card-info">
-                <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-                Aforo: 12 personas
-            </div>
-        </div>
-        <div class="card-footer">
-            <button class="btn-outline">Reservar Sala</button>
-        </div>
-    </article>
+<h3 class="rooms-header">Salas disponibles (<?= count($salasLibres) ?>)</h3>
 
-    <article class="card">
-        <div class="card-body">
-            <div class="card-title-row">
-                <h4>Sala Picasso</h4>
-                <span class="badge-success">Libre</span>
-            </div>
-            <p class="card-desc">Espacio diáfano ideal para talleres o dinámicas de grupo.</p>
-            <div class="card-info">
-                <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-                Aforo: 25 personas
-            </div>
-        </div>
-        <div class="card-footer">
-            <button class="btn-outline">Reservar Sala</button>
-        </div>
-    </article>
+<section class="rooms-grid">
 
-</div>
+    <?php foreach ($salas as $sala): ?>
+
+        <article class="card">
+
+            <div class="card-body">
+                <div class="card-title-row">
+                    <h3 class="rooms-header"><?= htmlspecialchars($sala->nombre) ?></h3>
+
+                    <?php if ($sala->estado === 'disponible'): ?>
+                        <span class="badget badget--success">Disponible</span>
+                    <?php elseif ($sala->estado === 'mantenimiento'): ?>
+                        <span class="badget badget--maintenance">En mantenimiento</span>
+                    <?php else: ?>
+                        <span class="badget badget--unavailable">Ocupada</span>
+                    <?php endif; ?>
+                </div>
+
+                <p class="card-desc">
+                    <?= htmlspecialchars($sala->descripcion) ?>
+                </p>
+
+                <div class="card-info">
+                    👥 Aforo: <?= htmlspecialchars($sala->aforo) ?> personas
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <?php if ($sala->estado === 'disponible'): ?>
+                    <a href="<?= BASE_URL ?>Reserva/solicitar/<?= $sala->id_sala ?>" class="btn-outline btn--reserve">
+                        Reservar Sala
+                    </a>
+                <?php else: ?>
+                    <button class="btn-outline" disabled style="opacity: 0.5; cursor: not-allowed; width: 100%;">
+                        No Disponible
+                    </button>
+                <?php endif; ?>
+            </div>
+
+        </article>
+
+    <?php endforeach; ?>
+
+</section>
